@@ -1,6 +1,7 @@
 package tests;
 
 import logique.Alchimiste;
+import logique.Ingredient;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,4 +27,11 @@ class AlchimisteTest {
 
         assertThrows(IllegalArgumentException.class, () -> new Alchimiste("Bob"));
     }
+
+    @Test void siNomExact5Exception(){
+
+        assertThrows(IllegalArgumentException.class, () -> new Alchimiste("Bobby"));
+    }
+
+    //Recette
 }
