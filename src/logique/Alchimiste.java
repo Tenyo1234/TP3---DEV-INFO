@@ -1,3 +1,8 @@
+/**
+ * Author : Thomas Labbe
+ * Ordre de conception : 3e
+ */
+
 package logique;
 
 import java.util.Random;
@@ -48,12 +53,12 @@ public class Alchimiste
     {
 
         if (nom == null)
-            throw new IllegalArgumentException("Le nom ne peut pas être null");
+            throw new IllegalArgumentException("Le nom d'alchimiste ne peut pas être null");
 
         int longueurNom = nom.length();
 
         if (longueurNom < 6)
-            throw new IllegalArgumentException("Le mot de pass doit contenir au minimum six caractères");
+            throw new IllegalArgumentException("Le nom d'alchimiste doit contenir au minimum six caractères");
 
         this.nom = nom;
     }
