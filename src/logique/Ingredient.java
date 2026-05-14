@@ -32,7 +32,7 @@ public class Ingredient
     private void setNom(String nom) {
 
         if (nom == null)
-            throw new IllegalArgumentException("Le nom ne peut pas être null");
+            throw new IllegalArgumentException("Le nom ne peut pas être null (ingredient)");
 
         int longueurNom = nom.length();
 
