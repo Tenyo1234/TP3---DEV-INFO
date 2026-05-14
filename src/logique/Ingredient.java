@@ -21,7 +21,7 @@ public class Ingredient
     }
 
     /**
-     * Cette methode sert a verifier et donne le nom souhaite par l'utilisateur
+     * Cette methode s'assure que le nom est non null est au dessus de 6 caracteres
      *
      * @param nom le nom que l'utilisateur souhaite utilise
      * @throws IllegalArgumentException si le param nom est null
@@ -37,7 +37,7 @@ public class Ingredient
         int longueurNom = nom.length();
 
         if (longueurNom < 6)
-            throw new IllegalArgumentException("Le mot de pass doit contenir au minimum six caractères");
+            throw new IllegalArgumentException("Le nom doit contenir au minimum six caractères");
 
         this.nom = nom;
     }

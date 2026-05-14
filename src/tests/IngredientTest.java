@@ -59,11 +59,15 @@ class IngredientTest {
 
     @Test void siPrixExact1(){
 
-        Ingredient i1 = new Ingredient(nomTest, 1);
+        prixTest = 1;
+
+        Ingredient i1 = new Ingredient(nomTest, prixTest);
     }
 
     @Test void siPrixInfException(){
 
-        assertThrows(IllegalArgumentException.class, () -> new Ingredient(nomTest, -10));
+        prixTest = -10;
+
+        assertThrows(IllegalArgumentException.class, () -> new Ingredient(nomTest, prixTest));
     }
 }
