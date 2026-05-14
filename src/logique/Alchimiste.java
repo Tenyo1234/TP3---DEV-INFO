@@ -47,10 +47,10 @@ public class Alchimiste
     private void setNom(String nom)
     {
 
-        int longueurNom = nom.length();
-
         if (nom == null)
             throw new IllegalArgumentException("Le nom ne peut pas être null");
+
+        int longueurNom = nom.length();
 
         if (longueurNom < 6)
             throw new IllegalArgumentException("Le mot de pass doit contenir au minimum six caractères");
