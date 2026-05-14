@@ -1,3 +1,8 @@
+/**
+ * Author : Thomas Labbe
+ * Ordre de conception : 2e
+ */
+
 package logique;
 
 import java.util.ArrayList;
@@ -65,12 +70,12 @@ public class Recette
     private void setNom(String nom) {
 
         if (nom == null)
-            throw new IllegalArgumentException("Le nom ne peut pas être null");
+            throw new IllegalArgumentException("Le nom de la recette ne peut pas être null");
 
         int longueurNom = nom.length();
 
         if (longueurNom < 10)
-            throw new IllegalArgumentException("Le mot de pass doit contenir au minimum six caractères");
+            throw new IllegalArgumentException("Le nom de recette doit contenir au minimum dix caractères");
 
         this.nom = nom;
     }
@@ -136,7 +141,7 @@ public class Recette
     {
 
         if (nom == null)
-            throw new IllegalArgumentException("Le nom ne peut pas être null");
+            throw new IllegalArgumentException("Le nom de recette ne peut pas être null");
 
         boolean estContenu = false;
 
