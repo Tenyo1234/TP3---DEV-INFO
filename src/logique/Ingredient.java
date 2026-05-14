@@ -32,12 +32,12 @@ public class Ingredient
     private void setNom(String nom) {
 
         if (nom == null)
-            throw new IllegalArgumentException("Le nom ne peut pas être null (ingredient)");
+            throw new IllegalArgumentException("Le nom d'ingredient ne peut pas être null");
 
         int longueurNom = nom.length();
 
         if (longueurNom < 6)
-            throw new IllegalArgumentException("Le nom doit contenir au minimum six caractères");
+            throw new IllegalArgumentException("Le nom d'ingredient doit contenir au minimum six caractères");
 
         this.nom = nom;
     }

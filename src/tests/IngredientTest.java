@@ -28,31 +28,43 @@ class IngredientTest {
     @Test
     void siNomNullException(){
 
-        assertThrows(IllegalArgumentException.class, () -> new Ingredient(null, prixTest));
+        Exception e = assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient(null, prixTest));
+
+        assertEquals("Le nom d'ingredient ne peut pas être null", e.getMessage());
     }
 
-    @Test void siSetNomEstValide(){
+    @Test
+    void siSetNomEstValide(){
 
         Ingredient i1 = new Ingredient(nomTest, prixTest);
 
         assertTrue(i1.getNom().length() >= 6);
     }
 
-    @Test void siNomTropCourtException(){
+    @Test
+    void siNomTropCourtException(){
 
-        assertThrows(IllegalArgumentException.class, () -> new Ingredient("Bob", prixTest));
+        Exception e = assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient("Bob", prixTest));
+
+        assertEquals("Le nom d'ingredient doit contenir au minimum six caractères", e.getMessage());
     }
 
-    @Test void siNomExact5Exception(){
+    @Test
+    void siNomExact5Exception(){
 
-        assertThrows(IllegalArgumentException.class, () -> new Ingredient("Bobby", prixTest));
+        Exception e = assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient("Bobby", prixTest));
+
+        assertEquals("Le nom d'ingredient doit contenir au minimum six caractères", e.getMessage());
     }
 
     //prix potion
 
     @Test void siPrixSuper0(){
 
-        Ingredient i1 = new Ingredient("Joseph", prixTest);
+        Ingredient i1 = new Ingredient(nomTest, prixTest);
 
         assertTrue(i1.getPrix() > 0);
     }
@@ -62,12 +74,18 @@ class IngredientTest {
         prixTest = 1;
 
         Ingredient i1 = new Ingredient(nomTest, prixTest);
+
+        assertEquals(1, i1.getPrix());
     }
 
-    @Test void siPrixInfException(){
+    @Test
+    void siPrixInfException(){
 
         prixTest = -10;
 
-        assertThrows(IllegalArgumentException.class, () -> new Ingredient(nomTest, prixTest));
+        Exception e = assertThrows(IllegalArgumentException.class, () ->
+                new Ingredient(nomTest, prixTest));
+
+        assertEquals("Le prix doit être superieur a zero", e.getMessage());
     }
 }
