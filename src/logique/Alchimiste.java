@@ -35,8 +35,26 @@ public class Alchimiste
         return this.experience;
     }
 
+    /**
+     * Cette methode sert a verifier et donne le nom souhaite par l'utilisateur
+     *
+     * @param nom le nom que l'utilisateur souhaite utilise
+     * @throws IllegalArgumentException si le param nom est null
+     * @throws IllegalArgumentException si le param nom est plus petit que 6 caractères
+     *
+     * Donne le nom qui sera utlise par le programme
+     */
     private void setNom(String nom)
     {
+
+        int longueurNom = nom.length();
+
+        if (nom == null)
+            throw new IllegalArgumentException("Le nom ne peut pas être null");
+
+        if (longueurNom < 6)
+            throw new IllegalArgumentException("Le mot de pass doit contenir au minimum six caractères");
+
         this.nom = nom;
     }
     private void setNiveau(int niveau)
@@ -48,8 +66,22 @@ public class Alchimiste
         this.experience = experience;
     }
 
+    /**
+     * Cette methode sert a creer une potion a partir du recette. Elle donne aussi
+     * un quantite d'experience si reussi
+     *
+     * @param recette est le nom de la recette que l'utilisateur souhaite faire
+     * @throws IllegalArgumentException si le param recette est null
+     * @return vrai si la recette a ete un succes, retourne faux dans le cas contraire
+     *
+     * La potion sera fait ou non selon un nombre aleatoire.
+     */
     public boolean fairePotion(Recette recette)
     {
+
+        if (recette == null)
+            throw new IllegalArgumentException("La recette ne peut pas être null");
+
         boolean estReussi = false;
         double tauxExperience = this.niveau * 0.05;
         double tauxEchec = (recette.getDifficulte() * 0.25) - tauxExperience;
