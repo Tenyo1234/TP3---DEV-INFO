@@ -148,6 +148,14 @@ class RecetteTest {
         assertTrue(r1.getPointExperience() > 0);
     }
 
+    //obtenirPrix
+
+    @Test
+    void siObtenirPrixRetourneLeBonPrix(){
+//        i1 > 3, i2 > 6, i3 > 10
+        assertEquals(19, r1.obtenirPrix());
+    }
+
     //contientIngredient
 
     @Test
