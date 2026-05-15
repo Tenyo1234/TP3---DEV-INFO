@@ -85,7 +85,7 @@ public class Alchimiste
     {
 
         if (recette == null)
-            throw new IllegalArgumentException("La recette ne peut pas être null");
+            throw new IllegalArgumentException("La recette de potion ne peut pas être null");
 
         boolean estReussi = false;
         double tauxExperience = this.niveau * 0.05;
@@ -111,7 +111,7 @@ public class Alchimiste
     {
         this.setExperience(this.getExperience() + experience);
 
-        if(this.getExperience() >= EXPERIENCE_POUR_NIVEAU_SUIVANT)
+        if(this.getExperience() >= EXPERIENCE_POUR_NIVEAU_SUIVANT) //500
         {
             this.setNiveau(this.getNiveau() + 1);
             this.setExperience(this.getExperience() - EXPERIENCE_POUR_NIVEAU_SUIVANT);
