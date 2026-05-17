@@ -1,3 +1,8 @@
+/**
+ * Author : Thomas Labbe
+ * Ordre de conception : 3e
+ */
+
 package logique;
 
 import java.io.FileWriter;
@@ -15,32 +20,69 @@ public class Laboratoire
     private ArrayList<Recette> recettes;
     private Alchimiste proprietaire;
 
+    /**
+     * Cree un objet Laboratoire en utilisant un object alchimiste
+     * @throws IllegalArgumentException si le param alchimiste est null
+     * @param alchimiste le proprietaire du laboratoire
+     */
     public Laboratoire(Alchimiste alchimiste)
     {
+
+        if (alchimiste == null)
+            throw new IllegalArgumentException("alchimiste ne peut pas etre null");
+
         this.chargerIngredients();
         this.chargerRecettes();
 
         this.proprietaire = alchimiste;
     }
 
+    /**
+     *
+     * @return la l'arrayliste d'ingredients
+     */
     public List<Ingredient> getIngredients()
     {
         return ingredients;
     }
+
+    /**
+     *
+     * @return la l'arrayliste de recette
+     */
     public List<Recette> getRecettes()
     {
         return recettes;
     }
+
+    /**
+     *
+     * @return le proprietaire / l'objet alchimiste
+     */
     public Alchimiste getProprietaire()
     {
         return proprietaire;
     }
 
+    /**
+     * Prend trois ingredients non null pour en faire une potion
+     *
+     * @param ing1 l'un des ingredients
+     * @param ing2 l'un des ingredients
+     * @param ing3 l'un des ingredients
+     * @throws IllegalArgumentException si l'un des param est null
+     * @return le resultat, si reussi ou non
+     */
     public ResultatExperience fairePotion(String ing1, String ing2, String ing3)
     {
+
+        if (ing1 == null || ing2 == null || ing3 == null)
+            throw new IllegalArgumentException("Aucun ingredients peuvent etre null");
+
         ResultatExperience experience = new ResultatExperience();
 
         Recette recette = this.trouverRecette(ing1, ing2, ing3);
+
         if(recette != null)
         {
             boolean success = this.proprietaire.fairePotion(recette);
@@ -52,8 +94,25 @@ public class Laboratoire
         return experience;
     }
 
+    /**
+     * Prend les param necessaire pour une recette,
+     * verifie si elle existe deja, si non, cree une nouvelle recette a partir des param
+     *
+     * @param ing1 l'un des ingredients
+     * @param ing2 l'un des ingredients
+     * @param ing3 l'un des ingredients
+     * @param nom le nom de la recette
+     * @param difficulte le niveau de difficulte de creation de la recette
+     * @param pointExperience les points experience attribue si reussi
+     * @throws IllegalArgumentException si au moins un des param Object est null
+     * @return si vrai si la recette existe, retourne faux si elle n'existe pas + la nouvelle recette.
+     */
     public ResultatExperience creerNouvellePotion(String ing1, String ing2, String ing3, String nom, int difficulte, int pointExperience)
     {
+
+        if (ing1 == null || ing2 == null || ing3 == null || nom == null)
+            throw new IllegalArgumentException("Aucun ingredients ainsi que le nom de recette peuvent etre null");
+
         ResultatExperience experience = new ResultatExperience();
         experience.setExiste(true);
 
@@ -75,8 +134,22 @@ public class Laboratoire
         return experience;
     }
 
+    /**
+     * Donne les trois ingredients (non null) et la methode cherche si la recette existe
+     * ou non.
+     *
+     * @param ing1 l'un des ingredients
+     * @param ing2 l'un des ingredients
+     * @param ing3 l'un des ingredients
+     * @throws IllegalArgumentException si l'un des param est null
+     * @return null si non trouve, la recette si trouve
+     */
     public Recette trouverRecette(String ing1, String ing2, String ing3)
     {
+
+        if (ing1 == null || ing2 == null || ing3 == null)
+            throw new IllegalArgumentException("Pour trouver une recette, les ingredients ne peuvent etre null");
+
         Recette resultat = null;
 
         for(Recette element : this.recettes)
@@ -91,8 +164,19 @@ public class Laboratoire
         return resultat;
     }
 
+    /**
+     * Donne le nom d'un ingredient pour savoir s'il se trouve dans la liste.
+     *
+     * @param nom Le nom de la recette
+     * @throws IllegalArgumentException si le param est null
+     * @return null si non trouves, true si trouves
+     */
     public Ingredient trouverIngredient(String nom)
     {
+
+        if(nom == null)
+            throw new IllegalArgumentException("Il faut un nom d'ingredients valide");
+
         Ingredient resultat = null;
 
         for (Ingredient ing : ingredients)
