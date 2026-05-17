@@ -1,3 +1,8 @@
+/**
+ * Author : Thomas Labbe
+ * Ordre de conception : 4e
+ */
+
 package tests;
 
 import logique.ResultatExperience;
